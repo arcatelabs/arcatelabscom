@@ -1,0 +1,88 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Pricing from "@/components/sections/Pricing.astro";
+import CTA from "@/components/sections/CTA.astro";
+
+const tiers = [
+  {
+    name: "Foundation",
+    price: "Custom",
+    description: "You know things are inefficient but don't have systems in place yet.",
+    features: [
+      "Workflow audit and process mapping",
+      "CRM setup or migration",
+      "Core integrations between your tools",
+      "Automated data entry and transfers",
+      "Help defining what to measure",
+      "Training and documentation",
+    ],
+    cta: { href: "/contact", label: "Get Started" },
+  },
+  {
+    name: "Optimization",
+    price: "Custom",
+    description: "You have tools and data but they're disconnected. Staff hours are wasted on copy-paste and clunky interfaces.",
+    features: [
+      "Everything in Foundation",
+      "Connect existing CRMs, sheets, and platforms",
+      "Automated handoffs between systems",
+      "Custom dashboards and reporting",
+      "Eliminate manual data transfer",
+      "Help you consistently hit your numbers",
+    ],
+    cta: { href: "/contact", label: "Get Started" },
+    highlighted: true,
+  },
+  {
+    name: "Scale",
+    price: "Custom",
+    description: "Your systems work but you need custom AI, deeper integrations, and measurable gains.",
+    features: [
+      "Everything in Optimization",
+      "Custom AI assistants using your data (RAG)",
+      "Advanced data pipelines and ETL",
+      "PDF, email, and web data extraction",
+      "Interactive AI for staff or customers",
+      "Purpose-built infrastructure to push your numbers higher",
+    ],
+    cta: { href: "/contact", label: "Get Started" },
+  },
+];
+---
+
+<BaseLayout title="Operations Automation" description="Custom workflows, system integrations, and AI-powered automation. Three tiers to meet you where you are.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <a href="/solutions" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Solutions</a>
+
+    <div class="mb-16">
+      <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+        Automation
+      </div>
+      <h1 class="text-5xl font-bold tracking-tight md:text-6xl mb-6">Operations Automation</h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        Custom workflows, system integrations, and AI-powered automation that eliminate manual work and connect your tools. From building your first system to scaling what already works.
+      </p>
+    </div>
+
+    <div class="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mb-16">
+      <p>
+        Most businesses lose hundreds of hours a month to work that shouldn't be manual — dragging files between platforms, copy-pasting fields into spreadsheets, compiling reports nobody reads until they're stale, and transferring data between systems that should already be talking to each other.
+      </p>
+      <p>
+        We build automations that handle the repetitive stuff in seconds so your talent stays focused on high-value work. Whether that means connecting your CRM to a custom program, pushing data from an intake system to a qualifier, or building an AI assistant that does research using your own data — we meet you where you are.
+      </p>
+    </div>
+  </div>
+
+  <Pricing
+    title="Where are you?"
+    subtitle="Three tiers based on your operational maturity. Every engagement is custom-scoped."
+    tiers={tiers}
+  />
+
+  <CTA
+    title="Not sure which tier fits?"
+    description="Tell us what you're working with and we'll figure out the right starting point together."
+    cta={{ href: "/contact", label: "Start a Conversation" }}
+  />
+</BaseLayout>

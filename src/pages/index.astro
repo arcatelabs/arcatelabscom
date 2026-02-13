@@ -1,11 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
-import Features from "@/components/sections/Features.astro";
 import CTA from "@/components/sections/CTA.astro";
 import TechShowcase from "@/components/sections/TechShowcase.astro";
 import directus from "@/lib/directus";
-import { readSingleton, readItems } from "@directus/sdk";
+import { readSingleton } from "@directus/sdk";
 
 let homepage: any = null;
 try {
@@ -13,33 +12,6 @@ try {
 } catch {
   // Collection empty or doesn't exist — use defaults
 }
-
-let solutions: any[] = [];
-try {
-  solutions = await directus.request(
-    readItems("solutions", {
-      filter: { status: { _eq: "published" } },
-      sort: ["sort"],
-      limit: 6,
-    })
-  );
-} catch {
-  // No solutions yet
-}
-
-const capabilities = solutions.length > 0
-  ? solutions.map((s: any) => ({
-      title: s.name,
-      description: s.description || "",
-      icon: s.icon || "zap",
-    }))
-  : [
-      { title: "SEO & Search Architecture", description: "Designing scalable search structures that align with user intent and support long-term discoverability.", icon: "globe" },
-      { title: "Programmatic Site Development", description: "Building flexible, data-driven sites designed to scale across markets, locations, or service categories.", icon: "zap" },
-      { title: "Workflow Automation", description: "Automating how demand is captured, filtered, and delivered to reduce friction and manual handling.", icon: "chart" },
-      { title: "Data-Driven Growth Systems", description: "Using performance data to inform system structure, iteration, and expansion.", icon: "shield" },
-      { title: "Custom Demand Infrastructure", description: "Designing purpose-built systems tailored to specific industries, constraints, or operational goals.", icon: "lock" },
-    ];
 ---
 
 <BaseLayout title="Arcate Labs" description="Arcate Labs - Automated demand systems built for scale. Search, software, and automation.">
@@ -68,11 +40,33 @@ const capabilities = solutions.length > 0
     </div>
   </section>
 
-  <Features
-    title={homepage?.features_title ?? "Capabilities"}
-    subtitle={homepage?.features_subtitle ?? "Scalable systems across search, engineering, and automation."}
-    features={capabilities}
-  />
+  <!-- Solutions -->
+  <section class="py-24">
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold leading-[1.1] md:text-5xl">Two Practices, One Goal</h2>
+        <p class="mt-4 text-muted-foreground text-lg">Build systems that grow your business without growing your workload.</p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <a href="/solutions/operations-automation" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+          <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+            Automation
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Operations Automation</h3>
+          <p class="text-muted-foreground mb-4">Custom workflows, system integrations, and AI-powered automation that eliminate manual work and connect your tools.</p>
+          <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
+        </a>
+        <a href="/solutions/seo-demand-systems" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+          <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+            Search
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">SEO Demand Systems</h3>
+          <p class="text-muted-foreground mb-4">Data-driven search infrastructure that turns organic and paid channels into measurable, compounding demand.</p>
+          <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- How We Work -->
   <section class="py-24 bg-muted/30">

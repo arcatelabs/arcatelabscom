@@ -16,30 +16,49 @@ try {
 }
 ---
 
-<BaseLayout title="Solutions" description="Software development and consulting solutions from Arcate Labs.">
+<BaseLayout title="Solutions" description="Arcate Labs - Operations automation and SEO demand systems built for scale.">
   <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
     <div class="mb-16">
       <h1 class="text-5xl font-bold tracking-tight md:text-7xl">Solutions</h1>
       <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
-        We deliver end-to-end solutions across the full technology stack. Here's how we can help.
+        Two focused practices, one goal: build systems that grow your business without growing your workload.
       </p>
     </div>
 
-    {solutions.length > 0 ? (
-      <div class="grid gap-8 md:grid-cols-2">
-        {solutions.map((solution: any) => (
-          <a href={`/solutions/${solution.slug}`} class="group rounded-lg border bg-card p-8 transition-colors hover:bg-accent/50">
+    <div class="grid gap-8 md:grid-cols-2">
+      {solutions.length > 0 ? (
+        solutions.map((solution: any) => (
+          <a href={`/solutions/${solution.slug}`} class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+              {solution.slug === "operations-automation" ? "Automation" : "Search"}
+            </div>
             <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{solution.name}</h2>
             {solution.description && (
-              <p class="text-muted-foreground">{solution.description}</p>
+              <p class="text-muted-foreground mb-4">{solution.description}</p>
             )}
+            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
           </a>
-        ))}
-      </div>
-    ) : (
-      <div class="rounded-lg border bg-muted/50 p-12 text-center">
-        <p class="text-muted-foreground">Solutions coming soon. Check back shortly.</p>
-      </div>
-    )}
+        ))
+      ) : (
+        <>
+          <a href="/solutions/operations-automation" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+              Automation
+            </div>
+            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Operations Automation</h2>
+            <p class="text-muted-foreground mb-4">Custom workflows, system integrations, and AI-powered automation that eliminate manual work and connect your tools.</p>
+            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
+          </a>
+          <a href="/solutions/seo-demand-systems" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+              Search
+            </div>
+            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">SEO Demand Systems</h2>
+            <p class="text-muted-foreground mb-4">Data-driven search infrastructure that turns organic and paid channels into measurable, compounding demand.</p>
+            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
+          </a>
+        </>
+      )}
+    </div>
   </div>
 </BaseLayout>
