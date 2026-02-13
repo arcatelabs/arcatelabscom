@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Features from "@/components/sections/Features.astro";
 import CTA from "@/components/sections/CTA.astro";
-import TechStack from "@/components/sections/TechStack.astro";
+import TechShowcase from "@/components/sections/TechShowcase.astro";
 import directus from "@/lib/directus";
 import { readSingleton, readItems } from "@directus/sdk";
 
@@ -57,11 +57,7 @@ const features = solutions.length > 0
     features={features}
   />
 
-  <TechStack
-    title="Tools We Use Every Day"
-    subtitle="We pick the best tools for each job — and know them inside out."
-    compact
-  />
+  <TechShowcase />
 
   <CTA
     title="Ready to build something great?"
