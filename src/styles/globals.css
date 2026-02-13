@@ -25,8 +25,9 @@
   --color-card-foreground: oklch(9.8% 0.0016 286.75);
   --color-popover: oklch(100% 0 0);
   --color-popover-foreground: oklch(9.8% 0.0016 286.75);
-  --color-primary: oklch(11.2% 0.0079 286.75);
-  --color-primary-foreground: oklch(98% 0.0011 286.75);
+  /* Brand CTA orange: #F59C29 */
+  --color-primary: oklch(75.5% 0.165 65);
+  --color-primary-foreground: oklch(100% 0 0);
   --color-secondary: oklch(96.1% 0.0011 286.75);
   --color-secondary-foreground: oklch(11.2% 0.0079 286.75);
   --color-muted: oklch(96.1% 0.0011 286.75);
@@ -37,31 +38,33 @@
   --color-destructive-foreground: oklch(98% 0.0011 286.75);
   --color-border: oklch(91.4% 0.009 286.75);
   --color-input: oklch(91.4% 0.009 286.75);
-  --color-ring: oklch(9.8% 0.0016 286.75);
+  --color-ring: oklch(75.5% 0.165 65);
 
   --radius: 0.5rem;
 }
 
 .dark {
-  --color-background: oklch(1.5% 0 0);
+  /* Brand dark background: #14181A */
+  --color-background: oklch(13.5% 0.005 230);
   --color-foreground: oklch(98% 0 0);
-  --color-card: oklch(4% 0 0);
+  --color-card: oklch(16% 0.005 230);
   --color-card-foreground: oklch(98% 0 0);
-  --color-popover: oklch(4% 0 0);
+  --color-popover: oklch(16% 0.005 230);
   --color-popover-foreground: oklch(98% 0 0);
-  --color-primary: oklch(98% 0 0);
-  --color-primary-foreground: oklch(1.5% 0 0);
-  --color-secondary: oklch(10% 0 0);
+  /* Brand CTA orange: #F59C29 */
+  --color-primary: oklch(75.5% 0.165 65);
+  --color-primary-foreground: oklch(13.5% 0.005 230);
+  --color-secondary: oklch(18% 0.005 230);
   --color-secondary-foreground: oklch(98% 0 0);
-  --color-muted: oklch(10% 0 0);
+  --color-muted: oklch(18% 0.005 230);
   --color-muted-foreground: oklch(71% 0 0);
-  --color-accent: oklch(10% 0 0);
+  --color-accent: oklch(18% 0.005 230);
   --color-accent-foreground: oklch(98% 0 0);
   --color-destructive: oklch(30.6% 0.132 29.23);
   --color-destructive-foreground: oklch(98% 0 0);
-  --color-border: oklch(25% 0 0);
-  --color-input: oklch(25% 0 0);
-  --color-ring: oklch(80% 0 0);
+  --color-border: oklch(25% 0.005 230);
+  --color-input: oklch(25% 0.005 230);
+  --color-ring: oklch(75.5% 0.165 65);
 }
 
 * {
@@ -74,16 +77,16 @@ body {
 }
 
 mark {
-  background-color: oklch(92% 0.05 150);
-  color: oklch(25% 0.02 150);
+  background-color: oklch(90% 0.08 65);
+  color: oklch(25% 0.04 65);
   font-weight: 600;
   padding: 0.1em 0.2em;
   border-radius: 0.2em;
 }
 
 .dark mark {
-  background-color: oklch(35% 0.05 150);
-  color: oklch(95% 0.02 150);
+  background-color: oklch(40% 0.08 65);
+  color: oklch(95% 0.03 65);
 }
 
 /* Ensure proper text contrast in dark mode */
