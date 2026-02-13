@@ -27,41 +27,78 @@ try {
   // No solutions yet
 }
 
-const features = solutions.length > 0
+const capabilities = solutions.length > 0
   ? solutions.map((s: any) => ({
       title: s.name,
       description: s.description || "",
       icon: s.icon || "zap",
     }))
   : [
-      { title: "Custom Software", description: "End-to-end development of web and mobile applications tailored to your business.", icon: "zap" },
-      { title: "AI & Automation", description: "Integrate intelligent automation and AI-powered solutions into your workflows.", icon: "chart" },
-      { title: "Cloud & Infrastructure", description: "Modern cloud architecture, DevOps, and scalable infrastructure.", icon: "globe" },
-      { title: "Consulting", description: "Technical strategy and architecture guidance for your team.", icon: "users" },
-      { title: "Product Design", description: "User-centered design that turns complex problems into intuitive experiences.", icon: "shield" },
-      { title: "Team Augmentation", description: "Skilled engineers embedded in your team to accelerate delivery.", icon: "lock" },
+      { title: "SEO & Search Architecture", description: "Designing scalable search structures that align with user intent and support long-term discoverability.", icon: "globe" },
+      { title: "Programmatic Site Development", description: "Building flexible, data-driven sites designed to scale across markets, locations, or service categories.", icon: "zap" },
+      { title: "Workflow Automation", description: "Automating how demand is captured, filtered, and delivered to reduce friction and manual handling.", icon: "chart" },
+      { title: "Data-Driven Growth Systems", description: "Using performance data to inform system structure, iteration, and expansion.", icon: "shield" },
+      { title: "Custom Demand Infrastructure", description: "Designing purpose-built systems tailored to specific industries, constraints, or operational goals.", icon: "lock" },
     ];
 ---
 
-<BaseLayout title="Arcate Labs" description="Arcate Labs - Software development and consulting studio. We help companies ship better products, faster.">
+<BaseLayout title="Arcate Labs" description="Arcate Labs - Automated demand systems built for scale. Search, software, and automation.">
   <Hero
-    title={homepage?.headline ?? "We build software that matters."}
-    subtitle={homepage?.tagline ?? "Arcate Labs is a software development and consulting studio. We help companies <mark>ship better products</mark>, faster."}
-    primaryCta={{ href: "/contact", label: "Get in Touch" }}
-    secondaryCta={{ href: "/solutions", label: "Our Solutions" }}
+    title={homepage?.headline ?? "Automated demand systems built for scale."}
+    subtitle={homepage?.tagline ?? "Welcome to the meeting point of <mark>search, software, and automation</mark>."}
+    primaryCta={{ href: homepage?.hero_primary_cta_link ?? "/contact", label: homepage?.hero_primary_cta_label ?? "Get Started" }}
+    secondaryCta={{ href: homepage?.hero_secondary_cta_link ?? "/solutions", label: homepage?.hero_secondary_cta_label ?? "Our Capabilities" }}
   />
+
+  <!-- What We Do -->
+  <section class="py-24">
+    <div class="container max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl mb-8">What We Do</h2>
+      <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+        <p>
+          At Arcate Labs, our team designs and operates automated demand systems that turn search intent into real business outcomes.
+        </p>
+        <p>
+          We build scalable infrastructure across SEO, engineering, and automation so that businesses can grow without managing the complexity behind it.
+        </p>
+        <p>
+          Whether you want a partner to help design and build a system, or you want someone to take care of it end to end, we can meet you where you are.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <Features
-    title="What We Do"
-    subtitle="Full-stack capabilities to take your idea from concept to production."
-    features={features}
+    title={homepage?.features_title ?? "Capabilities"}
+    subtitle={homepage?.features_subtitle ?? "Scalable systems across search, engineering, and automation."}
+    features={capabilities}
   />
 
-  <TechShowcase />
+  <!-- How We Work -->
+  <section class="py-24 bg-muted/30">
+    <div class="container max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl mb-8">How We Work</h2>
+      <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+        <p>
+          Every day, people look for someone to fix a problem, provide a service, or offer care. At the same time, many businesses struggle to be found — not because they lack skill, but because the systems connecting them to customers are complicated or unreliable.
+        </p>
+        <p>
+          We approach our work with the understanding that technology should support people, not ask them to reorganize their lives around it. Instead of managing ongoing marketing or short-term campaigns, we focus on creating structures that help the right connections happen without constant manual effort.
+        </p>
+        <p>
+          We focus on building things that last, designing with scale in mind from the beginning, and reducing the amount of ongoing effort required to keep things running.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <TechShowcase
+    body={homepage?.showcase_content}
+  />
 
   <CTA
-    title="Ready to build something great?"
-    description="Let's talk about your project and see how we can help."
-    cta={{ href: "/contact", label: "Start a Conversation" }}
+    title={homepage?.cta_title ?? "Let's build your demand system."}
+    description={homepage?.cta_description ?? "Whether you need a partner to design the architecture or someone to run it end to end, we're ready to talk."}
+    cta={{ href: homepage?.cta_button_link ?? "/contact", label: homepage?.cta_button_label ?? "Start a Conversation" }}
   />
 </BaseLayout>

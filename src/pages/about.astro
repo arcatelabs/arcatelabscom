@@ -2,7 +2,14 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TechStack from "@/components/sections/TechStack.astro";
 import directus, { getAssetUrl } from "@/lib/directus";
-import { readItems } from "@directus/sdk";
+import { readSingleton, readItems } from "@directus/sdk";
+
+let aboutPage: any = null;
+try {
+  aboutPage = await directus.request(readSingleton("about_page"));
+} catch {
+  // Collection empty or doesn't exist — use defaults
+}
 
 let teamMembers: any[] = [];
 try {
@@ -17,29 +24,34 @@ try {
 }
 ---
 
-<BaseLayout title="About" description="About Arcate Labs - who we are and what drives us.">
+<BaseLayout title="About" description="About Arcate Labs - automated demand systems built for scale.">
   <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
     <div class="mb-16">
-      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">About</h1>
-      <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
-        We're a team of engineers and designers who care deeply about building great software.
-      </p>
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">{aboutPage?.title ?? "About"}</h1>
     </div>
 
-    <div class="prose prose-lg max-w-none dark:prose-invert mb-20">
-      <p>
-        Arcate Labs is a software development and consulting studio. We partner with companies
-        of all sizes to design, build, and ship products that make a real difference.
-      </p>
-      <p>
-        We believe in simplicity, craftsmanship, and delivering results — not just code.
-        Every project we take on gets our full attention and expertise.
-      </p>
-    </div>
+    {aboutPage?.content ? (
+      <div class="prose prose-lg max-w-none dark:prose-invert mb-20" set:html={aboutPage.content} />
+    ) : (
+      <div class="space-y-6 text-lg text-muted-foreground leading-relaxed mb-20 max-w-3xl">
+        <p>
+          Arcate Labs designs and operates automated demand systems that turn search intent into real business outcomes.
+        </p>
+        <p>
+          Every day, people look for someone to fix a problem, provide a service, or offer care. At the same time, many businesses struggle to be found — not because they lack skill, but because the systems connecting them to customers are complicated or unreliable.
+        </p>
+        <p>
+          We approach our work with the understanding that technology should support people, not ask them to reorganize their lives around it. Instead of managing ongoing marketing or short-term campaigns, we focus on creating structures that help the right connections happen without constant manual effort.
+        </p>
+        <p>
+          We focus on building things that last, designing with scale in mind from the beginning, and reducing the amount of ongoing effort required to keep things running.
+        </p>
+      </div>
+    )}
 
     {teamMembers.length > 0 && (
       <div>
-        <h2 class="text-3xl font-bold mb-8">The Team</h2>
+        <h2 class="text-3xl font-bold mb-8">{aboutPage?.team_section_title ?? "The Team"}</h2>
         <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {teamMembers.map((member: any) => (
             <div class="rounded-lg border bg-card p-6 text-center">
