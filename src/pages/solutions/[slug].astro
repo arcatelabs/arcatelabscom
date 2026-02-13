@@ -15,10 +15,14 @@ export async function getStaticPaths() {
     return [];
   }
 
-  return solutions.map((solution: any) => ({
-    params: { slug: solution.slug },
-    props: { solution },
-  }));
+  // Filter slugs that have dedicated static pages
+  const staticSlugs = ["automation", "seo"];
+  return solutions
+    .filter((s: any) => !staticSlugs.includes(s.slug))
+    .map((solution: any) => ({
+      params: { slug: solution.slug },
+      props: { solution },
+    }));
 }
 
 const { solution } = Astro.props;
