@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1073 235" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-729.094822,-146.655345)">
+        <g transform="matrix(0.576082,0,0,0.536194,757.512937,-259.922081)">
+            <path d="M130.254,849.13C130.254,842.209 749.94,758.266 1110.439,758.266C1470.937,758.266 1812.761,805.599 1812.761,874C1812.761,942.401 1517,969.436 1517,969.436C1844.687,927.966 1651.467,803 1055.264,803C745.127,803 439.383,824.145 130.254,849.13Z" style="fill:#F59C29;"/>
+        </g>
+        <g transform="matrix(6.551461,0,0,6.551461,-2225.042797,-15971.149231)">
+            <text x="448.74px" y="2495.569px" style="font-family:'EurostileRegular', 'Eurostile', sans-serif;font-size:50px;fill:currentColor;">a<tspan x="474.728px 495.15px 519.893px 545.882px 562.666px " y="2495.569px 2495.569px 2495.569px 2495.569px 2495.569px ">rcate</tspan></text>
+        </g>
+    </g>
+</svg>
