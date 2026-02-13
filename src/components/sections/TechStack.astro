@@ -1,0 +1,117 @@
+---
+interface Tool {
+  name: string;
+  description: string;
+}
+
+interface Category {
+  label: string;
+  tools: Tool[];
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  compact?: boolean;
+}
+
+const { title = "Our Tech Stack", subtitle, compact = false } = Astro.props;
+
+const categories: Category[] = [
+  {
+    label: "AI & Development",
+    tools: [
+      { name: "Claude Code", description: "AI-powered development" },
+      { name: "Google Gemini", description: "Multimodal AI models" },
+      { name: "Python", description: "Automation & backend" },
+      { name: "GitHub", description: "Version control & CI/CD" },
+    ],
+  },
+  {
+    label: "Automation & Integration",
+    tools: [
+      { name: "n8n", description: "Workflow automation" },
+      { name: "Make", description: "Visual integrations" },
+      { name: "Zapier", description: "App connectors" },
+      { name: "Google API", description: "Custom integrations" },
+    ],
+  },
+  {
+    label: "Project Management",
+    tools: [
+      { name: "Trello", description: "Kanban boards" },
+      { name: "Asana", description: "Team workflows" },
+      { name: "Monday", description: "Work OS" },
+      { name: "Upwork", description: "Talent sourcing" },
+    ],
+  },
+  {
+    label: "Business & CRM",
+    tools: [
+      { name: "Salesforce", description: "Enterprise CRM" },
+      { name: "Airtable", description: "Flexible databases" },
+      { name: "Google Workspace", description: "Docs, Sheets, Drive" },
+      { name: "Google Sheets", description: "Data & reporting" },
+    ],
+  },
+  {
+    label: "Marketing & Growth",
+    tools: [
+      { name: "Meta Business", description: "Social advertising" },
+      { name: "Google Business", description: "Local presence" },
+      { name: "Google Ads", description: "Search & display" },
+      { name: "Affinity Photo", description: "Creative assets" },
+    ],
+  },
+];
+
+const displayCategories = compact ? categories.slice(0, 3) : categories;
+---
+
+<section class="py-24">
+  <div class="container max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col items-center space-y-4 text-center mb-16">
+      <h2 class="text-3xl font-bold leading-[1.1] sm:text-3xl md:text-5xl">
+        {title}
+      </h2>
+      {subtitle && (
+        <p class="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    <div class="space-y-12">
+      {displayCategories.map((category) => (
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <h3 class="text-sm font-semibold uppercase tracking-widest text-primary">
+              {category.label}
+            </h3>
+            <div class="flex-1 h-px bg-border"></div>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {category.tools.map((tool) => (
+              <div class="group relative rounded-lg border bg-card p-4 transition-all duration-200 hover:border-primary/40 hover:shadow-[0_0_20px_-5px] hover:shadow-primary/10">
+                <p class="font-semibold text-sm leading-tight">{tool.name}</p>
+                <p class="text-xs text-muted-foreground mt-1">{tool.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {compact && (
+      <div class="mt-12 text-center">
+        <a
+          href="/about#stack"
+          class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+        >
+          See full stack
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import TechStack from "@/components/sections/TechStack.astro";
 import directus, { getAssetUrl } from "@/lib/directus";
 import { readItems } from "@directus/sdk";
 
@@ -64,5 +65,12 @@ try {
         </div>
       </div>
     )}
+  </div>
+
+  <div id="stack">
+    <TechStack
+      title="Our Full Tech Stack"
+      subtitle="The tools and platforms we use to deliver results across every engagement."
+    />
   </div>
 </BaseLayout>

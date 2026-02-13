@@ -17,6 +17,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Eurostile';
+  src: url('/fonts/Eurostile.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Light mode colors */
   --color-background: oklch(100% 0 0);
@@ -87,6 +95,11 @@ mark {
 .dark mark {
   background-color: oklch(40% 0.08 65);
   color: oklch(95% 0.03 65);
+}
+
+/* Eurostile for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Eurostile', 'Geist', system-ui, sans-serif;
 }
 
 /* Ensure proper text contrast in dark mode */
