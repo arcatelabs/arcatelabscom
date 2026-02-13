@@ -1,64 +1,83 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import directus from "@/lib/directus";
-import { readItems } from "@directus/sdk";
-
-let solutions: any[] = [];
-try {
-  solutions = await directus.request(
-    readItems("solutions", {
-      filter: { status: { _eq: "published" } },
-      sort: ["sort"],
-    })
-  );
-} catch {
-  // No solutions yet
-}
 ---
 
-<BaseLayout title="Solutions" description="Arcate Labs - Operations automation and SEO demand systems built for scale.">
+<BaseLayout title="Solutions" description="Arcate Labs builds two kinds of systems. Both are designed to run without you.">
   <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
     <div class="mb-16">
       <h1 class="text-5xl font-bold tracking-tight md:text-7xl">Solutions</h1>
       <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
-        Two focused practices, one goal: build systems that grow your business without growing your workload.
+        We build two kinds of systems. Both are designed to run without you.
       </p>
     </div>
 
-    <div class="grid gap-8 md:grid-cols-2">
-      {solutions.length > 0 ? (
-        solutions.map((solution: any) => (
-          <a href={`/solutions/${solution.slug}`} class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
-            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-              {solution.slug === "operations-automation" ? "Automation" : "Search"}
-            </div>
-            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{solution.name}</h2>
-            {solution.description && (
-              <p class="text-muted-foreground mb-4">{solution.description}</p>
-            )}
-            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
-          </a>
-        ))
-      ) : (
-        <>
-          <a href="/solutions/operations-automation" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
-            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-              Automation
-            </div>
-            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Operations Automation</h2>
-            <p class="text-muted-foreground mb-4">Custom workflows, system integrations, and AI-powered automation that eliminate manual work and connect your tools.</p>
-            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
-          </a>
-          <a href="/solutions/seo-demand-systems" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
-            <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-              Search
-            </div>
-            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">SEO Demand Systems</h2>
-            <p class="text-muted-foreground mb-4">Data-driven search infrastructure that turns organic and paid channels into measurable, compounding demand.</p>
-            <span class="text-sm font-medium text-primary group-hover:underline">Learn more &rarr;</span>
-          </a>
-        </>
-      )}
+    <div class="grid gap-8 md:grid-cols-2 mb-16">
+      <a href="/solutions/automation" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+        <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+          The Engine
+        </div>
+        <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Automation Engineering</h2>
+        <p class="text-muted-foreground mb-4">
+          Every business has workflows that shouldn't be manual. Data entry, report generation, lead routing, system syncing, file processing — all of it can be automated.
+        </p>
+        <p class="text-muted-foreground mb-6">
+          We build custom automation systems that connect your tools, eliminate busywork, and give your team clarity on what to work on next. Whether it's a single workflow or a full operational overhaul, we design systems that run on their own.
+        </p>
+        <span class="text-sm font-medium text-primary group-hover:underline">Explore Automation &rarr;</span>
+      </a>
+      <a href="/solutions/seo" class="group rounded-lg border bg-card p-8 transition-all hover:bg-accent/50 hover:border-primary/50 hover:shadow-lg">
+        <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+          The Application
+        </div>
+        <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">SEO Development</h2>
+        <p class="text-muted-foreground mb-4">
+          We don't do "SEO services." We build SEO systems — programmatic sites, content pipelines, and technical infrastructure designed to generate organic traffic at scale.
+        </p>
+        <p class="text-muted-foreground mb-6">
+          Every SEO system we build is an automation system first. That's why they scale where traditional SEO doesn't.
+        </p>
+        <span class="text-sm font-medium text-primary group-hover:underline">Explore SEO &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Individual Services -->
+    <h2 class="text-2xl font-bold mb-8">All Services</h2>
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">Automation</p>
+        <h3 class="font-bold mb-1">Workflow Automation</h3>
+        <p class="text-sm text-muted-foreground">Custom n8n/Make/Zapier workflows that connect your tools and automate repetitive processes.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">Automation</p>
+        <h3 class="font-bold mb-1">AI Agent Development</h3>
+        <p class="text-sm text-muted-foreground">Purpose-built AI agents for classification, extraction, generation, and decision-making.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">Automation</p>
+        <h3 class="font-bold mb-1">System Integration</h3>
+        <p class="text-sm text-muted-foreground">Connecting the tools you already use into a single coherent system.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">SEO</p>
+        <h3 class="font-bold mb-1">Programmatic Site Development</h3>
+        <p class="text-sm text-muted-foreground">Data-driven sites designed to scale across markets, locations, or service categories.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">SEO</p>
+        <h3 class="font-bold mb-1">Content System Design</h3>
+        <p class="text-sm text-muted-foreground">Structured content workflows that turn data into published, optimized content.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6">
+        <p class="text-xs text-primary font-medium mb-1">SEO</p>
+        <h3 class="font-bold mb-1">Technical SEO & Site Architecture</h3>
+        <p class="text-sm text-muted-foreground">Schema, speed, linking, crawlability — the foundation that makes content rank.</p>
+      </div>
+      <div class="rounded-lg border bg-card p-6 md:col-span-2">
+        <p class="text-xs text-primary font-medium mb-1">SEO</p>
+        <h3 class="font-bold mb-1">Local SEO Infrastructure</h3>
+        <p class="text-sm text-muted-foreground">Multi-location SEO systems for businesses that need to rank in multiple markets.</p>
+      </div>
     </div>
   </div>
 </BaseLayout>

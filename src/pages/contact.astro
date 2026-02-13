@@ -11,10 +11,13 @@ try {
 }
 ---
 
-<BaseLayout title="Contact" description="Get in touch with Arcate Labs.">
+<BaseLayout title="Contact" description="Get in touch with Arcate Labs. Let's talk about your project.">
   <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
     <div class="mb-16">
-      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">{contactPage?.title ?? "Contact"}</h1>
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">{contactPage?.title ?? "Let's Talk"}</h1>
+      <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
+        Whether you need a single automation or a full system, we start with a conversation.
+      </p>
     </div>
 
     <div class="grid gap-12 md:grid-cols-2">
@@ -29,7 +32,7 @@ try {
             <input type="email" id="email" name="email" required class="w-full rounded-md border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
           </div>
           <div>
-            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+            <label for="message" class="block text-sm font-medium mb-2">What do you need help with?</label>
             <textarea id="message" name="message" rows="5" required class="w-full rounded-md border bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none"></textarea>
           </div>
           <button type="submit" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8">
@@ -46,11 +49,19 @@ try {
         {contactPage?.sidebar_content ? (
           <div class="prose dark:prose-invert" set:html={contactPage.sidebar_content} />
         ) : (
-          <div>
-            <h3 class="font-semibold mb-2">Let's Connect</h3>
-            <p class="text-muted-foreground">
-              Whether you have a specific project or just want to explore how we can work together, we'd love to hear from you.
-            </p>
+          <div class="space-y-6">
+            <div>
+              <h3 class="font-semibold mb-2">Not sure what you need?</h3>
+              <p class="text-muted-foreground">
+                That's fine. Describe the problem or the process that's eating your time. We'll figure out the right approach together.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">What happens next?</h3>
+              <p class="text-muted-foreground">
+                We'll get back to you within a business day. If there's a fit, we'll schedule a call to scope things out. No pressure, no pitch deck.
+              </p>
+            </div>
           </div>
         )}
       </div>

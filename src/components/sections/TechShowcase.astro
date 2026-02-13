@@ -25,15 +25,15 @@ interface Props {
 }
 
 const {
-  badge = "AI Operators",
-  title = "Your team should work on what matters",
+  badge = "Our Stack",
+  title = "Modern tools. No platform lock-in.",
   body,
   plusText,
 } = Astro.props;
 
-const defaultBody = `<p class="text-muted-foreground leading-relaxed">Most businesses lose hundreds of hours a month to work that shouldn't be manual — dragging files between platforms, copy-pasting fields into spreadsheets, compiling reports nobody reads until they're stale, and transferring data between systems that should already be talking to each other.</p><p class="text-muted-foreground leading-relaxed">We build automations that handle the repetitive stuff in seconds so your talent stays focused on high-value work. That six-hour weekly task? It runs itself now. The data entry that eats your Monday morning? Automagic. We connect your tools, eliminate busywork, and give your team clarity on exactly what to work on next.</p>`;
+const defaultBody = `<p class="text-muted-foreground leading-relaxed">We work with modern tools and aren't married to any single platform. Here's what we reach for most:</p>`;
 
-const defaultPlusText = `Plus: Zapier, Next.js, Docker, PostgreSQL, Vercel, Cloudflare, <a href="/about#stack" class="text-primary underline hover:no-underline">and many more</a>.`;
+const defaultPlusText = `Plus: Zapier, Next.js, Docker, PostgreSQL, Supabase, Vercel, Cloudflare, <a href="/about#stack" class="text-primary underline hover:no-underline">and more</a>.`;
 
 const tools = [
   { name: "Claude", subtitle: "AI Operator", icon: "claude" },

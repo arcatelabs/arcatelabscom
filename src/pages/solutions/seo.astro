@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTA from "@/components/sections/CTA.astro";
+---
+
+<BaseLayout title="SEO Development" description="Programmatic sites, content systems, and technical SEO infrastructure — built on automation so they scale.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <a href="/solutions" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Solutions</a>
+
+    <div class="mb-16">
+      <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+        The Application
+      </div>
+      <h1 class="text-5xl font-bold tracking-tight md:text-6xl mb-6">SEO Development</h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        Programmatic sites, content systems, and technical SEO infrastructure — built on automation so they scale without scaling your team.
+      </p>
+    </div>
+
+    <!-- The Approach -->
+    <div class="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mb-20">
+      <h2 class="text-2xl font-bold text-foreground">The Approach</h2>
+      <p>
+        We don't sell monthly SEO retainers or promise page-one rankings in 30 days. We build the infrastructure that generates organic traffic — the sites, the content systems, the data pipelines, the technical foundation.
+      </p>
+      <p>
+        Every SEO system we build is an automation system first. Content gets generated from structured data. Sites get built programmatically across markets and locations. Technical SEO gets monitored and maintained by automated workflows. That's why our systems scale where traditional SEO services don't.
+      </p>
+    </div>
+
+    <!-- What We Build -->
+    <div class="mb-20">
+      <h2 class="text-2xl font-bold mb-8">What We Build</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Programmatic Sites</h3>
+          <p class="text-sm text-muted-foreground">Data-driven sites that scale across markets, locations, or service categories. One template, hundreds of pages, all optimized.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Content Pipeline Automation</h3>
+          <p class="text-sm text-muted-foreground">From keyword research to content brief to draft to publish — automated at every step where automation adds value.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Technical SEO Infrastructure</h3>
+          <p class="text-sm text-muted-foreground">Schema markup, site architecture, internal linking, page speed — the foundation that makes content rank.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Local SEO Systems</h3>
+          <p class="text-sm text-muted-foreground">Multi-location sites, Google Business Profile optimization, citation building, review management — all systematized.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6 md:col-span-2">
+          <h3 class="font-bold mb-2">Data Enrichment Pipelines</h3>
+          <p class="text-sm text-muted-foreground">Pull business data, enrich with GMB/social/review data, classify by service, and push to your site or CRM. Automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-8">Services</h2>
+      <div class="space-y-8">
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">Programmatic Site Development</h3>
+          <p class="text-sm text-primary mb-3">Building flexible, data-driven sites designed to scale across markets, locations, or service categories.</p>
+          <p class="text-muted-foreground">Instead of building 200 pages by hand, we build the system that generates them from your data. One content model, one template system, hundreds of optimized pages. Built with Astro, Next.js, or whatever framework fits your stack. Backed by structured data in Airtable, Supabase, or your CMS of choice.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">Content System Design</h3>
+          <p class="text-sm text-primary mb-3">Structured content workflows that turn data into published, optimized content — with automation at every step.</p>
+          <p class="text-muted-foreground">We design the content model (topics, clusters, keywords, funnel stages), build the editorial workflow in Airtable or your CMS, and automate the parts that don't need a human touch: keyword clustering, brief generation, metadata, schema markup, internal linking suggestions. Your writers focus on writing. The system handles everything else.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">Technical SEO & Site Architecture</h3>
+          <p class="text-sm text-primary mb-3">The structural foundation that makes content rank — schema, speed, linking, crawlability.</p>
+          <p class="text-muted-foreground">We audit and build the technical SEO layer: structured data implementation, site architecture planning, internal linking systems, Core Web Vitals optimization, and crawl budget management. This isn't a one-time audit with a PDF report. We build the monitoring and maintenance systems so issues get caught and fixed automatically.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">Local SEO Infrastructure</h3>
+          <p class="text-sm text-primary mb-3">Multi-location SEO systems for businesses that need to rank in multiple markets.</p>
+          <p class="text-muted-foreground">City pages, service-area pages, Google Business Profile management, citation building, review aggregation — all systematized and partially automated. Designed for businesses with 5-500+ locations that need consistent local presence without manually managing each one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <CTA
+    title="Need SEO that actually scales?"
+    description="We build the systems, not just the strategy. Let's talk about your market."
+    cta={{ href: "/contact", label: "Start a Conversation" }}
+  />
+</BaseLayout>

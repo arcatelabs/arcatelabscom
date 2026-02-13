@@ -24,33 +24,56 @@ try {
 }
 ---
 
-<BaseLayout title="About" description="About Arcate Labs - automated demand systems built for scale.">
+<BaseLayout title="About" description="About Arcate Labs — an automation-first development studio based in Wisconsin.">
   <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
     <div class="mb-16">
-      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">{aboutPage?.title ?? "About"}</h1>
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">{aboutPage?.title ?? "About Arcate Labs"}</h1>
     </div>
 
     {aboutPage?.content ? (
       <div class="prose prose-lg max-w-none dark:prose-invert mb-20" set:html={aboutPage.content} />
     ) : (
-      <div class="space-y-6 text-lg text-muted-foreground leading-relaxed mb-20 max-w-3xl">
-        <p>
-          Arcate Labs designs and operates automated demand systems that turn search intent into real business outcomes.
-        </p>
-        <p>
-          Every day, people look for someone to fix a problem, provide a service, or offer care. At the same time, many businesses struggle to be found — not because they lack skill, but because the systems connecting them to customers are complicated or unreliable.
-        </p>
-        <p>
-          We approach our work with the understanding that technology should support people, not ask them to reorganize their lives around it. Instead of managing ongoing marketing or short-term campaigns, we focus on creating structures that help the right connections happen without constant manual effort.
-        </p>
-        <p>
-          We focus on building things that last, designing with scale in mind from the beginning, and reducing the amount of ongoing effort required to keep things running.
-        </p>
-      </div>
+      <>
+        <!-- The Story -->
+        <div class="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mb-20">
+          <h2 class="text-2xl font-bold text-foreground">The Story</h2>
+          <p>
+            Arcate Labs started with a simple observation: most of the work in digital marketing shouldn't be manual.
+          </p>
+          <p>
+            We were building SEO sites and spending half our time on things that had nothing to do with strategy or creativity — moving data between systems, formatting content, building the same page structures over and over, compiling reports. So we started automating it.
+          </p>
+          <p>
+            First it was our own workflows. Then it was the entire site-building process. Then clients started asking if we could automate their stuff too.
+          </p>
+          <p>
+            Now we're a development studio that builds automation systems across industries — with SEO as our sharpest vertical. We're based in Wisconsin, we work remotely, and we build things that run themselves.
+          </p>
+        </div>
+
+        <!-- What We Believe -->
+        <div class="mb-20">
+          <h2 class="text-2xl font-bold mb-8">What We Believe</h2>
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="rounded-lg border bg-card p-6">
+              <h3 class="font-bold mb-2">Build systems, not dependency.</h3>
+              <p class="text-sm text-muted-foreground">Our goal is to give you something that works without us. If you need us forever, we built it wrong.</p>
+            </div>
+            <div class="rounded-lg border bg-card p-6">
+              <h3 class="font-bold mb-2">Automate the boring parts.</h3>
+              <p class="text-sm text-muted-foreground">Humans should do creative, strategic, judgment-heavy work. Machines should do everything else.</p>
+            </div>
+            <div class="rounded-lg border bg-card p-6">
+              <h3 class="font-bold mb-2">Ship, then improve.</h3>
+              <p class="text-sm text-muted-foreground">A working system today beats a perfect plan next quarter.</p>
+            </div>
+          </div>
+        </div>
+      </>
     )}
 
     {teamMembers.length > 0 && (
-      <div>
+      <div class="mb-20">
         <h2 class="text-3xl font-bold mb-8">{aboutPage?.team_section_title ?? "The Team"}</h2>
         <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
           {teamMembers.map((member: any) => (
@@ -81,8 +104,8 @@ try {
 
   <div id="stack">
     <TechStack
-      title="Our Full Tech Stack"
-      subtitle="The tools and platforms we use to deliver results across every engagement."
+      title="Our Stack"
+      subtitle="The tools and platforms we use to build and deliver automation systems."
     />
   </div>
 </BaseLayout>

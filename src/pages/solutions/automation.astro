@@ -1,0 +1,98 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import CTA from "@/components/sections/CTA.astro";
+---
+
+<BaseLayout title="Automation Engineering" description="Custom workflows, system integrations, and AI-powered automation that eliminate manual work.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <a href="/solutions" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Solutions</a>
+
+    <div class="mb-16">
+      <div class="mb-4 inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+        The Engine
+      </div>
+      <h1 class="text-5xl font-bold tracking-tight md:text-6xl mb-6">Automation Engineering</h1>
+      <p class="text-xl text-muted-foreground max-w-3xl">
+        Custom workflows, system integrations, and AI-powered automation that eliminate the manual work your team shouldn't be doing.
+      </p>
+    </div>
+
+    <!-- The Problem -->
+    <div class="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mb-20">
+      <h2 class="text-2xl font-bold text-foreground">The Problem</h2>
+      <p>
+        Most businesses lose hundreds of hours a month to work that shouldn't be manual. Dragging files between platforms. Copy-pasting into spreadsheets. Compiling reports nobody reads until they're stale. Transferring data between systems that should already be talking to each other.
+      </p>
+      <p>
+        It's not that your team isn't capable — it's that they're spending their capability on the wrong things.
+      </p>
+    </div>
+
+    <!-- What We Build -->
+    <div class="space-y-6 text-lg text-muted-foreground leading-relaxed max-w-3xl mb-20">
+      <h2 class="text-2xl font-bold text-foreground">What We Build</h2>
+      <p>
+        We design and build automation systems using tools like n8n, Make, Zapier, Python, and AI agents. The specifics depend on your stack and your problem — but the outcome is always the same: less manual work, fewer errors, and more time for the things that actually grow your business.
+      </p>
+    </div>
+
+    <!-- Common Projects -->
+    <div class="mb-20">
+      <h2 class="text-2xl font-bold mb-8">Common Projects</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Data Pipeline Automation</h3>
+          <p class="text-sm text-muted-foreground">Pull, transform, and push data between systems on a schedule. No more manual exports.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">AI-Powered Workflows</h3>
+          <p class="text-sm text-muted-foreground">Use Claude, GPT, or Gemini to classify, summarize, extract, or generate content inside your existing workflows.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">System Integration</h3>
+          <p class="text-sm text-muted-foreground">Connect tools that don't natively talk to each other. CRM to accounting to project management to reporting, all synced.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Report Automation</h3>
+          <p class="text-sm text-muted-foreground">Auto-generate weekly/monthly reports from live data. Delivered to Slack, email, or a dashboard.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Lead Routing & Notification</h3>
+          <p class="text-sm text-muted-foreground">New lead comes in, gets scored, gets assigned, rep gets notified. All automatic.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-6">
+          <h3 class="font-bold mb-2">Document Processing</h3>
+          <p class="text-sm text-muted-foreground">Extract data from PDFs, invoices, forms. Classify and route to the right place.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold mb-8">Services</h2>
+      <div class="space-y-8">
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">Workflow Automation</h3>
+          <p class="text-sm text-primary mb-3">Custom n8n, Make, or Zapier workflows that connect your tools and automate repetitive processes.</p>
+          <p class="text-muted-foreground">You describe the process. We build the automation. It runs on a schedule, on a trigger, or on demand — whatever fits. Includes monitoring, error handling, and documentation so your team understands what's happening.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">AI Agent Development</h3>
+          <p class="text-sm text-primary mb-3">Purpose-built AI agents that handle classification, extraction, generation, and decision-making inside your workflows.</p>
+          <p class="text-muted-foreground">Not chatbots. Functional AI that processes your data, makes decisions based on rules you define, and takes action inside your systems. Built with Claude, GPT, Gemini, or open-source models depending on the use case.</p>
+        </div>
+        <div class="rounded-lg border bg-card p-8">
+          <h3 class="text-xl font-bold mb-2">System Integration</h3>
+          <p class="text-sm text-primary mb-3">Connecting the tools you already use into a single, coherent system.</p>
+          <p class="text-muted-foreground">You shouldn't need to manually move data between platforms. We build the bridges — APIs, webhooks, database syncs — so information flows where it needs to go without anyone touching it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <CTA
+    title="Still doing it manually?"
+    description="Tell us about the workflow that's eating your time. We'll scope out what automation looks like."
+    cta={{ href: "/contact", label: "Start a Conversation" }}
+  />
+</BaseLayout>
