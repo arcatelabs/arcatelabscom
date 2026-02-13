@@ -1,5 +1,8 @@
-<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#14181A"/>
-  <text x="16" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="20" fill="white">a</text>
-  <rect x="5" y="22" width="22" height="3" rx="1.5" fill="#F59C29"/>
+<svg viewBox="0 0 301 301" xmlns="http://www.w3.org/2000/svg">
+  <rect width="301" height="301" rx="48" fill="#14181A"/>
+  <g transform="matrix(1,0,0,1,-87,-109.383212)">
+    <g transform="matrix(0.860137,0,0,1.048733,-759.375096,-865.924366)">
+      <path d="M1333.944,1217L1271,1217L1261,1139C1261,1139 1084.632,1141.124 984,1217C1018,1083 1131.545,931.644 1202,930C1298.57,927.746 1333.944,1217 1333.944,1217ZM1174,985C1103.383,996.267 1035,1171 1035,1171C1126.469,1119.91 1167.586,1108.774 1253,1096C1240.413,1025.289 1212.23,978.901 1174,985Z" fill="#F59C29"/>
+    </g>
+  </g>
 </svg>
