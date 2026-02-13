@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import directus, { getAssetUrl } from "@/lib/directus";
+import { readItems } from "@directus/sdk";
+
+let teamMembers: any[] = [];
+try {
+  teamMembers = await directus.request(
+    readItems("team_members", {
+      filter: { status: { _eq: "published" } },
+      sort: ["sort"],
+    })
+  );
+} catch {
+  // No team members yet
+}
+---
+
+<BaseLayout title="About" description="About Arcate Labs - who we are and what drives us.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <div class="mb-16">
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">About</h1>
+      <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
+        We're a team of engineers and designers who care deeply about building great software.
+      </p>
+    </div>
+
+    <div class="prose prose-lg max-w-none dark:prose-invert mb-20">
+      <p>
+        Arcate Labs is a software development and consulting studio. We partner with companies
+        of all sizes to design, build, and ship products that make a real difference.
+      </p>
+      <p>
+        We believe in simplicity, craftsmanship, and delivering results — not just code.
+        Every project we take on gets our full attention and expertise.
+      </p>
+    </div>
+
+    {teamMembers.length > 0 && (
+      <div>
+        <h2 class="text-3xl font-bold mb-8">The Team</h2>
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+          {teamMembers.map((member: any) => (
+            <div class="rounded-lg border bg-card p-6 text-center">
+              {member.photo ? (
+                <img src={getAssetUrl(member.photo)} alt={member.name} class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
+              ) : (
+                <div class="w-24 h-24 rounded-full mx-auto mb-4 bg-muted flex items-center justify-center">
+                  <span class="text-2xl font-bold text-muted-foreground">{member.name.charAt(0)}</span>
+                </div>
+              )}
+              <h3 class="font-bold">{member.name}</h3>
+              {member.role && (
+                <p class="text-sm text-muted-foreground">{member.role}</p>
+              )}
+              {member.bio && (
+                <p class="mt-3 text-sm text-muted-foreground">{member.bio}</p>
+              )}
+              {member.linkedin && (
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="text-sm text-primary hover:underline mt-2 inline-block">LinkedIn</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

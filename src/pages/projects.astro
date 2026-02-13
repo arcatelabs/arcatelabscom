@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import directus, { getAssetUrl } from "@/lib/directus";
+import { readItems } from "@directus/sdk";
+
+let projects: any[] = [];
+try {
+  projects = await directus.request(
+    readItems("projects", {
+      filter: { status: { _eq: "published" } },
+      sort: ["sort"],
+    })
+  );
+} catch {
+  // No projects yet
+}
+---
+
+<BaseLayout title="Projects" description="Selected work and case studies from Arcate Labs.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <div class="mb-16">
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">Projects</h1>
+      <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
+        A selection of work we're proud of.
+      </p>
+    </div>
+
+    {projects.length > 0 ? (
+      <div class="grid gap-8 md:grid-cols-2">
+        {projects.map((project: any) => (
+          <a href={`/projects/${project.slug}`} class="group rounded-lg border bg-card overflow-hidden transition-colors hover:bg-accent/50">
+            {project.image && (
+              <div class="aspect-video bg-muted overflow-hidden">
+                <img src={getAssetUrl(project.image)} alt={project.title} class="w-full h-full object-cover" />
+              </div>
+            )}
+            <div class="p-6">
+              {project.client && (
+                <p class="text-sm text-muted-foreground mb-1">{project.client}</p>
+              )}
+              <h2 class="text-xl font-bold group-hover:text-primary transition-colors">{project.title}</h2>
+              {project.summary && (
+                <p class="mt-2 text-muted-foreground text-sm">{project.summary}</p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-lg border bg-muted/50 p-12 text-center">
+        <p class="text-muted-foreground">Projects coming soon. Check back shortly.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

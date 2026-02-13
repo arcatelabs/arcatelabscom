@@ -1,0 +1,64 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Features from "@/components/sections/Features.astro";
+import CTA from "@/components/sections/CTA.astro";
+import directus from "@/lib/directus";
+import { readSingleton, readItems } from "@directus/sdk";
+
+let homepage: any = null;
+try {
+  homepage = await directus.request(readSingleton("homepage"));
+} catch {
+  // Collection empty or doesn't exist — use defaults
+}
+
+let solutions: any[] = [];
+try {
+  solutions = await directus.request(
+    readItems("solutions", {
+      filter: { status: { _eq: "published" } },
+      sort: ["sort"],
+      limit: 6,
+    })
+  );
+} catch {
+  // No solutions yet
+}
+
+const features = solutions.length > 0
+  ? solutions.map((s: any) => ({
+      title: s.name,
+      description: s.description || "",
+      icon: s.icon || "zap",
+    }))
+  : [
+      { title: "Custom Software", description: "End-to-end development of web and mobile applications tailored to your business.", icon: "zap" },
+      { title: "AI & Automation", description: "Integrate intelligent automation and AI-powered solutions into your workflows.", icon: "chart" },
+      { title: "Cloud & Infrastructure", description: "Modern cloud architecture, DevOps, and scalable infrastructure.", icon: "globe" },
+      { title: "Consulting", description: "Technical strategy and architecture guidance for your team.", icon: "users" },
+      { title: "Product Design", description: "User-centered design that turns complex problems into intuitive experiences.", icon: "shield" },
+      { title: "Team Augmentation", description: "Skilled engineers embedded in your team to accelerate delivery.", icon: "lock" },
+    ];
+---
+
+<BaseLayout title="Arcate Labs" description="Arcate Labs - Software development and consulting studio. We help companies ship better products, faster.">
+  <Hero
+    title={homepage?.headline ?? "We build software that matters."}
+    subtitle={homepage?.tagline ?? "Arcate Labs is a software development and consulting studio. We help companies <mark>ship better products</mark>, faster."}
+    primaryCta={{ href: "/contact", label: "Get in Touch" }}
+    secondaryCta={{ href: "/solutions", label: "Our Solutions" }}
+  />
+
+  <Features
+    title="What We Do"
+    subtitle="Full-stack capabilities to take your idea from concept to production."
+    features={features}
+  />
+
+  <CTA
+    title="Ready to build something great?"
+    description="Let's talk about your project and see how we can help."
+    cta={{ href: "/contact", label: "Start a Conversation" }}
+  />
+</BaseLayout>

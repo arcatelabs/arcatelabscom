@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import directus from "@/lib/directus";
+import { readItems } from "@directus/sdk";
+
+let solutions: any[] = [];
+try {
+  solutions = await directus.request(
+    readItems("solutions", {
+      filter: { status: { _eq: "published" } },
+      sort: ["sort"],
+    })
+  );
+} catch {
+  // No solutions yet
+}
+---
+
+<BaseLayout title="Solutions" description="Software development and consulting solutions from Arcate Labs.">
+  <div class="container max-w-5xl mx-auto py-20 px-4 sm:px-6">
+    <div class="mb-16">
+      <h1 class="text-5xl font-bold tracking-tight md:text-7xl">Solutions</h1>
+      <p class="mt-6 text-xl text-muted-foreground max-w-2xl">
+        We deliver end-to-end solutions across the full technology stack. Here's how we can help.
+      </p>
+    </div>
+
+    {solutions.length > 0 ? (
+      <div class="grid gap-8 md:grid-cols-2">
+        {solutions.map((solution: any) => (
+          <a href={`/solutions/${solution.slug}`} class="group rounded-lg border bg-card p-8 transition-colors hover:bg-accent/50">
+            <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{solution.name}</h2>
+            {solution.description && (
+              <p class="text-muted-foreground">{solution.description}</p>
+            )}
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-lg border bg-muted/50 p-12 text-center">
+        <p class="text-muted-foreground">Solutions coming soon. Check back shortly.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

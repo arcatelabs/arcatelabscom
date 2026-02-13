@@ -1,0 +1,73 @@
+---
+/**
+ * Footer Component
+ *
+ * Unified footer with boxed and fullWidth variants.
+ * Contains navigation links, resources, and creator info.
+ *
+ * @example
+ * ```astro
+ * <Footer />
+ * <Footer variant="fullWidth" />
+ * ```
+ */
+import Logo from "./Logo.astro";
+
+interface Props {
+  /** Layout variant - boxed (default) or fullWidth */
+  variant?: 'boxed' | 'fullWidth';
+}
+
+const { variant = 'boxed' } = Astro.props;
+
+const footerLinks = {
+  pages: [
+    { href: "/solutions", label: "Solutions" },
+    { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ],
+};
+
+const containerClass = variant === 'fullWidth' 
+  ? 'w-full px-4' 
+  : 'container max-w-5xl mx-auto px-4 sm:px-6';
+---
+
+<footer class="border-t bg-background">
+  <div class:list={[containerClass, "py-12"]}>
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-3">
+      <div class="col-span-2 md:col-span-1">
+        <Logo />
+        <p class="mt-4 text-sm text-muted-foreground">
+          Software development and consulting studio. We help companies ship better products, faster.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4">Pages</h3>
+        <ul class="space-y-2">
+          {footerLinks.pages.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-4">Get in Touch</h3>
+        <a href="/contact" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+      <p>&copy; {new Date().getFullYear()} Arcate Labs. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

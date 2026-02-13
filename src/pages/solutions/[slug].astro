@@ -1,0 +1,41 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import directus, { getAssetUrl } from "@/lib/directus";
+import { readItems } from "@directus/sdk";
+
+export async function getStaticPaths() {
+  let solutions: any[] = [];
+  try {
+    solutions = await directus.request(
+      readItems("solutions", {
+        filter: { status: { _eq: "published" } },
+      })
+    );
+  } catch {
+    return [];
+  }
+
+  return solutions.map((solution: any) => ({
+    params: { slug: solution.slug },
+    props: { solution },
+  }));
+}
+
+const { solution } = Astro.props;
+---
+
+<BaseLayout title={solution.name} description={solution.description || `${solution.name} - Arcate Labs`}>
+  <div class="container max-w-4xl mx-auto py-20 px-4 sm:px-6">
+    <a href="/solutions" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Solutions</a>
+    <h1 class="text-5xl font-bold tracking-tight mb-6">{solution.name}</h1>
+    {solution.description && (
+      <p class="text-xl text-muted-foreground mb-12">{solution.description}</p>
+    )}
+    {solution.image && (
+      <img src={getAssetUrl(solution.image)} alt={solution.name} class="rounded-lg mb-12 w-full" />
+    )}
+    {solution.content && (
+      <div class="prose prose-lg max-w-none dark:prose-invert" set:html={solution.content} />
+    )}
+  </div>
+</BaseLayout>
