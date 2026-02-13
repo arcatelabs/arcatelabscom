@@ -44,11 +44,20 @@ function formatDate(date: string) {
     <a href="/blog" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Posts</a>
 
     <header class="mb-12">
-      <h1 class="text-4xl font-bold tracking-tight md:text-5xl mb-4">{post.title}</h1>
-      <div class="flex items-center gap-4 text-sm text-muted-foreground">
-        {post.author && <span>{post.author}</span>}
-        {post.date_published && (
-          <time datetime={post.date_published}>{formatDate(post.date_published)}</time>
+      <h1 class="text-4xl font-bold tracking-tight md:text-5xl mb-6">{post.title}</h1>
+      <div class="flex items-center gap-4">
+        {post.author && (
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold shrink-0">
+              {post.author.split(" ").map((n: string) => n[0]).join("")}
+            </div>
+            <div class="flex flex-col">
+              <span class="text-sm font-medium text-foreground">{post.author}</span>
+              {post.date_published && (
+                <time datetime={post.date_published} class="text-xs text-muted-foreground">{formatDate(post.date_published)}</time>
+              )}
+            </div>
+          </div>
         )}
       </div>
       {post.tags && post.tags.length > 0 && (
