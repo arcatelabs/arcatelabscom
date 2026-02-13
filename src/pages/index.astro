@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
+import Features from "@/components/sections/Features.astro";
 import CTA from "@/components/sections/CTA.astro";
 import TechShowcase from "@/components/sections/TechShowcase.astro";
 import directus from "@/lib/directus";
@@ -39,6 +40,18 @@ try {
       </div>
     </div>
   </section>
+
+  <Features
+    title={homepage?.features_title ?? "Capabilities"}
+    subtitle={homepage?.features_subtitle ?? "Scalable systems across search, engineering, and automation."}
+    features={[
+      { title: "SEO & Search Architecture", description: "Designing scalable search structures that align with user intent and support long-term discoverability.", icon: "globe" },
+      { title: "Programmatic Site Development", description: "Building flexible, data-driven sites designed to scale across markets, locations, or service categories.", icon: "zap" },
+      { title: "Workflow Automation", description: "Automating how demand is captured, filtered, and delivered to reduce friction and manual handling.", icon: "chart" },
+      { title: "Data-Driven Growth Systems", description: "Using performance data to inform system structure, iteration, and expansion.", icon: "shield" },
+      { title: "Custom Demand Infrastructure", description: "Designing purpose-built systems tailored to specific industries, constraints, or operational goals.", icon: "lock" },
+    ]}
+  />
 
   <!-- Solutions -->
   <section class="py-24">
