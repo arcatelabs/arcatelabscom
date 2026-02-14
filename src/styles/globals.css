@@ -106,6 +106,7 @@ h4,
 h5,
 h6 {
   font-family: "Eurostile", "Geist", system-ui, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 /* Ensure proper text contrast in dark mode */
