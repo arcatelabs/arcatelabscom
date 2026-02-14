@@ -16,15 +16,17 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 
-const { 
-  title, 
-  description = "AstroDeck - Modern Astro.js Component Library",
+const {
+  title,
+  description = "Arcate Labs - Automation & SEO Development",
   image,
+  schema,
 } = Astro.props;
 
-const fullTitle = `${title} | AstroDeck`;
+const fullTitle = `${title} | Arcate Labs`;
 ---
 
 <!doctype html>
@@ -35,10 +37,11 @@ const fullTitle = `${title} | AstroDeck`;
     <FontPreload />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullTitle}</title>
-    <SEO 
+    <SEO
       title={fullTitle}
       description={description}
       image={image}
+      schema={schema}
     />
     <ViewTransitions />
     <script is:inline>

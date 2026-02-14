@@ -13,9 +13,28 @@ try {
 } catch {
   // Collection empty or doesn't exist — use defaults
 }
+
+const homepageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Arcate Labs",
+    "url": "https://arcatelabs.com",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Arcate Labs",
+    "url": "https://arcatelabs.com",
+    "logo": "https://arcatelabs.com/logo.svg",
+    "description": "Automation-first development studio. Custom workflows, SEO infrastructure, and AI-powered systems.",
+    "areaServed": "US",
+    "serviceType": ["Workflow Automation", "SEO Development", "AI Agent Development", "System Integration"],
+  }
+];
 ---
 
-<BaseLayout title="Arcate Labs" description="Arcate Labs builds automation systems — custom workflows, SEO infrastructure, and AI-powered systems designed to run without you.">
+<BaseLayout title="Automation Systems That Do the Work for You" description="Custom workflows, SEO infrastructure, and AI-powered systems — designed to run without you babysitting them. We build the systems that produce different results." schema={homepageSchema}>
   <Hero
     title={homepage?.headline ?? "We build automation systems that do the work for you."}
     subtitle={homepage?.tagline ?? "Custom workflows, SEO infrastructure, and AI-powered systems — designed to run without you babysitting them."}

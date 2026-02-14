@@ -44,15 +44,17 @@ interface Props {
   type?: 'website' | 'article';
   publishedTime?: Date;
   author?: string;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 
-const { 
-  title, 
-  description = "Arcate Labs - Software Development & Consulting",
+const {
+  title,
+  description = "Arcate Labs builds automation systems — custom workflows, SEO infrastructure, and AI-powered systems designed to run without you.",
   image,
   type = 'website',
   publishedTime,
   author,
+  schema,
 } = Astro.props;
 
 const fullTitle = `${title} | Arcate Labs`;
@@ -68,13 +70,14 @@ const fullTitle = `${title} | Arcate Labs`;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <title>{fullTitle}</title>
-    <SEO 
+    <SEO
       title={fullTitle}
       description={description}
       image={image}
       type={type}
       publishedTime={publishedTime}
       author={author}
+      schema={schema}
     />
     <ViewTransitions />
     <script is:inline>

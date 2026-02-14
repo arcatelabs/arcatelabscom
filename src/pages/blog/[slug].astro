@@ -30,6 +30,31 @@ function formatDate(date: string) {
     day: "numeric",
   });
 }
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.excerpt || `${post.title} - Arcate Labs`,
+  "author": {
+    "@type": "Person",
+    "name": post.author || "Arcate Labs",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Arcate Labs",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://arcatelabs.com/logo.svg",
+    },
+  },
+  ...(post.date_published && { "datePublished": new Date(post.date_published).toISOString() }),
+  ...(post.cover_image && { "image": getAssetUrl(post.cover_image) }),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://arcatelabs.com/blog/${post.slug}`,
+  },
+};
 ---
 
 <BaseLayout
@@ -39,6 +64,7 @@ function formatDate(date: string) {
   publishedTime={post.date_published ? new Date(post.date_published) : undefined}
   author={post.author || "Arcate Labs"}
   image={post.cover_image ? getAssetUrl(post.cover_image) : undefined}
+  schema={articleSchema}
 >
   <article class="container max-w-4xl mx-auto py-20 px-4 sm:px-6">
     <a href="/blog" class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 inline-block">&larr; All Posts</a>

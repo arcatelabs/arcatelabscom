@@ -27,6 +27,7 @@ interface Props {
   publishedTime?: Date;
   author?: string;
   noindex?: boolean;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 
 const {
@@ -37,6 +38,7 @@ const {
   publishedTime,
   author = 'Arcate Labs',
   noindex = false,
+  schema,
 } = Astro.props;
 
 // Fallback for dev server when Astro.site might be undefined
@@ -46,6 +48,48 @@ const socialImageURL = new URL(image, siteUrl);
 
 const siteName = 'Arcate Labs';
 const twitterHandle = ''; // TODO: add Twitter handle
+
+// Build breadcrumb from URL path
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl.toString().replace(/\/$/, '') }
+];
+pathSegments.forEach((segment, i) => {
+  const path = '/' + pathSegments.slice(0, i + 1).join('/');
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    "position": i + 2,
+    "name": segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+    "item": new URL(path, siteUrl).toString()
+  });
+});
+
+const breadcrumbSchema = pathSegments.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbItems
+} : null;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Arcate Labs",
+  "url": siteUrl.toString().replace(/\/$/, ''),
+  "logo": new URL('/logo.svg', siteUrl).toString(),
+  "description": "Arcate Labs is an automation-first development studio. We build automation systems, SEO infrastructure, and AI-powered workflows.",
+  "sameAs": []
+};
+
+// Combine all schema: org + breadcrumb + page-specific
+const allSchemas: Record<string, any>[] = [organizationSchema];
+if (breadcrumbSchema) allSchemas.push(breadcrumbSchema);
+if (schema) {
+  if (Array.isArray(schema)) {
+    allSchemas.push(...schema);
+  } else {
+    allSchemas.push(schema);
+  }
+}
 ---
 
 <!-- Primary Meta Tags -->
@@ -86,3 +130,8 @@ const twitterHandle = ''; // TODO: add Twitter handle
 <!-- Sitemap & RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title="Arcate Labs Blog RSS Feed" href="/rss.xml" />
+
+<!-- Structured Data -->
+{allSchemas.map(s => (
+  <script type="application/ld+json" set:html={JSON.stringify(s)} />
+))}
