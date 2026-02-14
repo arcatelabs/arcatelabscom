@@ -8,5 +8,5 @@ export default directus;
 
 export function getAssetUrl(id: string | null | undefined): string | undefined {
   if (!id) return undefined;
-  return `${import.meta.env.DIRECTUS_URL}/assets/${id}`;
+  return `${import.meta.env.DIRECTUS_URL}/assets/${id}?access_token=${import.meta.env.DIRECTUS_TOKEN}`;
 }
